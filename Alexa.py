@@ -95,23 +95,6 @@ def run_alexa():
         url = f"https://www.google.com/search?q={search_term}"
         webbrowser.open(url)
         talk(f"Here are the search results for {search_term}")
-        
-    elif 'send email' in command:
-        try:
-            talk("What should I say?")
-            content = take_command()
-            talk("Who is the recipient?")
-            recipient = take_command()
-            server = smtplib.SMTP('smtp.gmail.com', 587)
-            server.ehlo()
-            server.starttls()
-            server.login('your_email@gmail.com', 'your_password')
-            server.sendmail('your_email@gmail.com', recipient, content)
-            server.close()
-            talk('Email has been sent successfully.')
-        except Exception as e:
-            print(e)
-            talk('Sorry, I am unable to send the email at the moment.')
             
     elif 'open website' in command:
         try:
@@ -131,15 +114,6 @@ def run_alexa():
         except Exception as e:
             print(e)
             talk('Sorry, I could not perform the calculation.')
-            
-    elif 'kaisi ho' in command:
-        talk('mein aik dum theeeeek huun')
-        
-    elif 'ai kaun padha raha hai' in command:
-        talk('AI sir Yasir Padha rahay hain')
-    
-    
-    
             
     else:
         talk('Please say the command again.')
